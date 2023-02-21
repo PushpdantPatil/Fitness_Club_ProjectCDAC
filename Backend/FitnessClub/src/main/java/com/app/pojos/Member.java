@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
@@ -32,20 +33,20 @@ public class Member extends BaseEntity
 	@Column(name="phone_no")
 	private double phoneNo;
 	
-	@Column(length = 100, unique = true) 
+	@Column(length = 100) 
 	private String address;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name = "trainer_id")
 	private Trainer trainer;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name = "branch_id")
 	private Branch branch;
@@ -58,11 +59,11 @@ public class Member extends BaseEntity
 	private String password;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Payment> payments = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "member", cascade = CascadeType.ALL,orphanRemoval=true)
 	private Report report;
 	
 	public Member() {

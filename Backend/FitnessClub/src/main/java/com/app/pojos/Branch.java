@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Branch extends BaseEntity {
@@ -48,18 +50,22 @@ public class Branch extends BaseEntity {
 	private double phoneNo;
 
 	@OneToOne(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private Manager manager;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Trainer> trainers = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Member> members = new ArrayList<>();
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Batch> batches = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Packages> packages = new ArrayList<>();
 
@@ -147,11 +153,11 @@ public class Branch extends BaseEntity {
 		this.members = members;
 	}
 
-	public List<Batch> getBranches() {
+	public List<Batch> getBatches() {
 		return batches;
 	}
 
-	public void setBranches(List<Branch> branches) {
+	public void setBatches(List<Batch> batches) {
 		this.batches = batches;
 	}
 
@@ -163,6 +169,13 @@ public class Branch extends BaseEntity {
 		this.packages = packages;
 	}
 	
+	public void removeMember(Member p)
+	{
+		//parent ----X---> child
+		members.remove(p);
+		//child ----X----> parent
+		p.setBranch(null);	
+	}
 	
 	
 	

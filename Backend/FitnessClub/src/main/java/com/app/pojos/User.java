@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,7 +35,7 @@ public class User extends BaseEntity
 	private Trainer trainer;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Member member;
 	
 	public User() 
@@ -103,6 +104,12 @@ public class User extends BaseEntity
 		this.member = member;
 	}
 	
-	
+	public void removeMember(Member p)
+	{
+		//parent ----X---> child
+		this.setMember(null);
+		//child ----X----> parent
+		p.setUser(null);	
+	}
   
 }

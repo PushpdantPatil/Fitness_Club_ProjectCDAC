@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -18,7 +19,7 @@ public class Batch extends BaseEntity
 	@Column(name = "batch_time", length = 20)
 	private LocalTime batchTime;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="branch")
 	private Branch branch;
 

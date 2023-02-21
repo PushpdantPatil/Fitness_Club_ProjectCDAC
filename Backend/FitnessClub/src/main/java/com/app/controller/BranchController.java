@@ -1,5 +1,50 @@
 package com.app.controller;
 
-public class BranchController {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ResponseDTO;
+import com.app.pojos.Branch;
+import com.app.pojos.Trainer;
+import com.app.pojos.Branch;
+import com.app.service.IBranchService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("/branch")
+public class BranchController 
+{
+
+	@Autowired
+	  private IBranchService imas;
+	
+	@PostMapping("/add")
+	  public ResponseDTO<?> addBranch(@RequestBody Branch m)
+	  {
+		  System.out.println("Branchis "+m);
+		  Branch m1 = imas.addBranch(m);
+		  System.out.println(m1);
+		  if(m1!=null)
+			  return new ResponseDTO<>(HttpStatus.OK,"Branch Added ",m1);
+		  return new ResponseDTO<>(HttpStatus.FAILED_DEPENDENCY,"Branch not added ",m1);
+	  }
+	
+	
+	
+	@DeleteMapping("/delete/Branch/{id}")
+	public ResponseDTO<?> deleteBranch(@PathVariable long id) {
+		System.out.println("in delete Branch " + id);
+		Branch cascadeAll = imas.cascade(id);
+		Branch deleteBranch = imas.deleteBranch(cascadeAll.getId());
+		return new ResponseDTO<>(HttpStatus.OK, "Branch deleted successfully", deleteBranch);
+	}
+	
 }

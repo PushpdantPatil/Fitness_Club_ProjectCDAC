@@ -30,7 +30,7 @@ public class Manager extends BaseEntity
 	@Column(name="phone_no")
 	private double phoneNo;
 	
-	@Column(length = 100, unique = true) 
+	@Column(length = 100) 
 	private String address;
 	
 	@OneToOne

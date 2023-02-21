@@ -26,6 +26,15 @@ public class UserServiceImpl implements IUserService
 		User valid = uu.findByEmailAndPassword(u.getEmail(),u.getPassword());
 		return valid;
 	}
+
+
+	@Override
+	public String deleteUserByEmail(String email) 
+	{
+		uu.deleteByEmail(email);
+		return null;
+	}
+	
 	
 	
    
