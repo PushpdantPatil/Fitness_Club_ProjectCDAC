@@ -43,10 +43,15 @@ public class UserController
 		System.out.println("In constructor of " + getClass());
 	}
 	
-	@PostMapping("/sigin")
+	@PostMapping("/signin")
 	public LoginResponse<?> validateUser(@RequestBody User u)
 	{
 		User o =ii.validate(u);
+		if(o.getRole()==Role.ADMIN)
+		{
+			Manager man = mm.findByUserId(o);
+			return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+		}
 		if(o.getRole()==Role.MANAGER)
 		{
 			Manager man = mm.findByUserId(o);

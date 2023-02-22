@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import com.app.pojos.Branch;
 
 public interface IBranchService
@@ -10,5 +12,7 @@ public interface IBranchService
 	Branch cascade(long id);
 
 	Branch deleteBranch(long id);
+
+	List<Branch> getBranches();
 
 }

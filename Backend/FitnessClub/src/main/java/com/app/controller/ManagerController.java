@@ -38,6 +38,7 @@ public class ManagerController
 	  return null;
   }
   
+  @CrossOrigin(origins = "http://localhost:3000")
   @PostMapping("/members/{id}")
 	public ResponseDTO<?> getAllMembers(@PathVariable long id) 
      {
@@ -45,6 +46,7 @@ public class ManagerController
 		return new ResponseDTO<>(HttpStatus.OK,"Users Found ",imas.getAllMembers(id));
 	}
   
+  @CrossOrigin(origins = "http://localhost:3000")
   @PostMapping("/trainers/{id}")
 	public ResponseDTO<?> getAllTrainers(@PathVariable long id) 
    {

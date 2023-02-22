@@ -99,4 +99,12 @@ public class BranchServiceImpl implements IBranchService {
 		return b;
 	}
 
+	@Override
+	public List<Branch> getBranches() 
+	{
+		return brpo.findAll();
+	}
+	
+	
+
 }

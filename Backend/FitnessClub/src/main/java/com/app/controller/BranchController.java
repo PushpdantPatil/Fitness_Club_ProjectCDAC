@@ -1,19 +1,19 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
-import com.app.pojos.Branch;
-import com.app.pojos.Trainer;
 import com.app.pojos.Branch;
 import com.app.service.IBranchService;
 
@@ -46,5 +46,15 @@ public class BranchController
 		Branch deleteBranch = imas.deleteBranch(cascadeAll.getId());
 		return new ResponseDTO<>(HttpStatus.OK, "Branch deleted successfully", deleteBranch);
 	}
+	
+	@GetMapping("/branch")
+	  public ResponseDTO<?> getAllBranches()
+	  {
+		 List<Branch> m1 = imas.getBranches();
+		  if(m1!=null)
+			  return new ResponseDTO<>(HttpStatus.OK,"Branch Added ",m1);
+		  return new ResponseDTO<>(HttpStatus.FAILED_DEPENDENCY,"Branch not added ",m1);
+	  }
+	
 	
 }

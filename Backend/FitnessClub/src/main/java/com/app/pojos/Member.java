@@ -89,6 +89,21 @@ public class Member extends BaseEntity
 	}
 
 
+	public Member(String firstName, String lastName, String email, LocalDate dob, double phoneNo, String address,String password,
+			 Role role,Branch branch) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.dob = dob;
+		this.phoneNo = phoneNo;
+		this.address = address;
+		this.role = role;
+		this.password = password;
+		this.branch=branch;
+	}
+
+
 	public Role getRole() {
 		return role;
 	}

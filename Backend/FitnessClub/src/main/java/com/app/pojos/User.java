@@ -35,7 +35,7 @@ public class User extends BaseEntity
 	private Trainer trainer;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
 	private Member member;
 	
 	public User() 

@@ -40,7 +40,6 @@ public class Manager extends BaseEntity
 
 	@OneToOne
 	@JoinColumn(name = "branch_id")
-	@JsonIgnore
 	private Branch branch;
 	
 	@JoinTable(name = "role") 
@@ -90,6 +89,21 @@ public class Manager extends BaseEntity
 		this.address = address;
 		//this.user = user;
 		//this.branch = branch;
+		this.role = role;
+	}
+
+	public Manager(String firstName, String lastName, String email, String password, LocalDate dob, double phoneNo,
+			String address,Branch branch,Role role) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.dob = dob;
+		this.phoneNo = phoneNo;
+		this.address = address;
+		//this.user = user;
+		this.branch = branch;
 		this.role = role;
 	}
 
