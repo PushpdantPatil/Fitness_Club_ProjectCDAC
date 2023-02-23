@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -62,7 +63,7 @@ public class Branch extends BaseEntity {
 	private List<Member> members = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true,fetch=FetchType.LAZY)
 	private List<Batch> batches = new ArrayList<>();
 	
 	@JsonIgnore

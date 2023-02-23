@@ -34,6 +34,13 @@ public class Batch extends BaseEntity
 		this.batchTime = batchTime;
 		this.branch = branch;
 	}
+	
+
+	public Batch(String batchType, LocalTime batchTime) {
+		super();
+		this.batchType = batchType;
+		this.batchTime = batchTime;
+	}
 
 	public String getBatchType() {
 		return batchType;
