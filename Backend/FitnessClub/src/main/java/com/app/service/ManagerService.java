@@ -80,6 +80,36 @@ public class ManagerService implements IManagerService
 		mr.deleteById(m.getId());	
 		return m;
 	}
+
+	@Override
+	public Manager registerManager(Manager m) 
+	{
+		Manager mm = mr.save(m);
+		User u = new User(mm.getEmail(),mm.getPassword(),mm.getRole());
+		u = urpo.save(u);
+		u.setManager(mm);
+		mm.setUser(u);
+		return mm;
+	}
+
+	@Override
+	public Manager addBranch(Manager manager, long id)
+	{
+		Manager man =mr.findById(manager.getId()).get();
+		Branch bb = brpo.findById(id).orElseThrow();
+		man.setBranch(bb);
+		return mr.save(man);
+	}
+
+	@Override
+	public List<Manager> getAllManagers() 
+	{
+		return mr.findAll();
+	}
+	
+	
+	
+	
 	
 	
 

@@ -60,6 +60,7 @@ public class MemberServiceImpl implements IMemberService
 	public Member deleteMember(long id) 
 	{
 		Member m = tr.findById(id).get();
+		if(m.getBranch() != null)
 		m.getBranch().getMembers().remove(m);
 		m.getUser().setMember(null);
 		if(m.getTrainer()!=null)
@@ -80,6 +81,24 @@ public class MemberServiceImpl implements IMemberService
 		trainer.getMembers().add(mem);
 	    Member msave =tr.save(mem);
 		return msave;
+	}
+
+	@Override
+	public Member registerMember(Member m) 
+	{
+		Member member = tr.save(m);
+		User u = new User(member.getEmail(),member.getPassword(),member.getRole());
+		u = urpo.save(u);
+		u.setMember(member);
+		member.setUser(u);
+		//return member;
+		return null;
+	}
+
+	@Override
+	public List<Member> getAllmembers()
+	{
+		return tr.findAll();
 	}
 	
 	

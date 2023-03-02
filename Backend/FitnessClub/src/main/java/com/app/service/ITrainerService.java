@@ -1,7 +1,7 @@
 package com.app.service;
 
-import com.app.pojos.Manager;
-import com.app.pojos.Member;
+import java.util.List;
+
 import com.app.pojos.Trainer;
 import com.app.pojos.User;
 
@@ -14,4 +14,6 @@ public interface ITrainerService
 	public Trainer deleteTrainer(long id);
 
 	public Trainer setMembersNull(long id);
+
+	public List<Trainer> getAlltrainers();
 }

@@ -18,6 +18,12 @@ public interface IManagerService
 	public List<Trainer> getAllTrainers(long id);
 
 	public Manager deleteManager(long id);
+
+	public Manager registerManager(Manager m);
+
+	public Manager addBranch(Manager manager, long id);
+
+	public List<Manager> getAllManagers();
    
    
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class TrainerController
 {
 
 	@Autowired
-	  private ITrainerService imas;
+	  private ITrainerService trainer;
 	
 	@Autowired
 	  private IUserService us;
@@ -34,7 +35,7 @@ public class TrainerController
 	  public Trainer addTrainer(@RequestBody Trainer m,@PathVariable long branch_id)
 	  {
 		  System.out.println("Trainer is "+m);
-		  Trainer m1 = imas.registerTrainer(m,branch_id);
+		  Trainer m1 = trainer.registerTrainer(m,branch_id);
 		  System.out.println(m1);
 		  if(m1!=null)
 		  return m1;
@@ -44,9 +45,16 @@ public class TrainerController
 	  @DeleteMapping("/delete/trainer/{id}")
 		public ResponseDTO<?> deleteUser(@PathVariable long id) {
 			System.out.println("in delete user " + id);
-			Trainer nullMember = imas.setMembersNull(id);
-			Trainer deleteUser = imas.deleteTrainer(nullMember.getId());
+			Trainer nullMember = trainer.setMembersNull(id);
+			Trainer deleteUser = trainer.deleteTrainer(nullMember.getId());
 			String user = us.deleteUserByEmail(deleteUser.getEmail());
 			return new ResponseDTO<>(HttpStatus.OK, "User deleted successfully", deleteUser);
 		}
+
+		@GetMapping("/trainers")
+		  public ResponseDTO<?> getAlltrainers() 
+		  {
+				System.out.println("in get all trainers");
+				return new ResponseDTO<>(HttpStatus.OK,"Users Found ",trainer.getAlltrainers());
+		  }
 }

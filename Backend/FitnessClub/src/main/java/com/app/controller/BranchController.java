@@ -24,13 +24,13 @@ public class BranchController
 {
 
 	@Autowired
-	  private IBranchService imas;
+	  private IBranchService branchServ;
 	
 	@PostMapping("/add")
 	  public ResponseDTO<?> addBranch(@RequestBody Branch m)
 	  {
 		  System.out.println("Branchis "+m);
-		  Branch m1 = imas.addBranch(m);
+		  Branch m1 = branchServ.addBranch(m);
 		  System.out.println(m1);
 		  if(m1!=null)
 			  return new ResponseDTO<>(HttpStatus.OK,"Branch Added ",m1);
@@ -42,15 +42,15 @@ public class BranchController
 	@DeleteMapping("/delete/Branch/{id}")
 	public ResponseDTO<?> deleteBranch(@PathVariable long id) {
 		System.out.println("in delete Branch " + id);
-		Branch cascadeAll = imas.cascade(id);
-		Branch deleteBranch = imas.deleteBranch(cascadeAll.getId());
+		Branch cascadeAll = branchServ.cascade(id);
+		Branch deleteBranch = branchServ.deleteBranch(cascadeAll.getId());
 		return new ResponseDTO<>(HttpStatus.OK, "Branch deleted successfully", deleteBranch);
 	}
 	
 	@GetMapping("/branch")
 	  public ResponseDTO<?> getAllBranches()
 	  {
-		 List<Branch> m1 = imas.getBranches();
+		 List<Branch> m1 = branchServ.getBranches();
 		  if(m1!=null)
 			  return new ResponseDTO<>(HttpStatus.OK,"Branch Added ",m1);
 		  return new ResponseDTO<>(HttpStatus.FAILED_DEPENDENCY,"Branch not added ",m1);
