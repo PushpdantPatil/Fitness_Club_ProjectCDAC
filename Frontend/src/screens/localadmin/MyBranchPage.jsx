@@ -29,14 +29,7 @@ const  BranchPage=()=> {
   const [members, setMember] = useState([]);
   const [trainers, setTrainer] = useState([]);
   const [batches, setBatch] = useState([]);
-   // const history = useHistory();
-
-    //const isLogIn = useSelector((state) => state.isSignin);
-
-    // if(isLogIn.status === false){
-    //     alert('please signin first!!')
-    //     history.push('/signin')
-    //   }
+   
 
     useEffect(() => {
         console.log("User component is mounted");
@@ -111,7 +104,7 @@ const  BranchPage=()=> {
     }
     const deleteTrainer = (trainer) => {
         console.log(trainer.id);
-        axios.delete(url+"/users/delete/"+trainer.id).then((response) => {
+        axios.delete(url+"/trainer/delete/trainer/"+trainer.id).then((response) => {
             const result = response.data;
             if(result.status === "OK"){
                 getTrainer();
@@ -147,7 +140,7 @@ const  BranchPage=()=> {
              <hr/>
              <hr/>
 
-             <Link to="/register" className="btn btn-warning"> Add Member </Link>
+             {/* <Link to="/register" className="btn btn-warning"> Add Member </Link> */}
 
              <Link to="/addtrainer"> <a className="btn btn-warning" href=" ">Add Trainer</a> </Link>
 
@@ -163,9 +156,8 @@ const  BranchPage=()=> {
                         <th>FirstName</th>
                         <th>LasttName</th>
                         <th>email</th>
-                       
                         <th>Phone No.</th>
-                        <th>Action</th>
+                        {/* <th>Action</th> */}
                         
                         
                     </tr>
@@ -180,7 +172,7 @@ const  BranchPage=()=> {
                                     <td>{member.lastName}</td>
                                     <td>{member.email}</td>                                
                                     <td>{member.phoneNo}</td>
-                                    <td>
+                                    {/* <td>
                                         <button type="button" class="btn btn-danger" onClick={()=>{deleteMember(member)}}>
                                            Delete
                                         </button>&nbsp;&nbsp;
@@ -189,9 +181,8 @@ const  BranchPage=()=> {
                                 }}>
                                            Edit
                                         </button>
-                                        </td>
-                                    {/* <td>{member.branch}</td> */}
-                                    {/* <td>{member.userBatchId}</td> */} 
+                                        </td> */}
+                                   
                                     
                                 </tr>
                             )
@@ -234,11 +225,11 @@ const  BranchPage=()=> {
                                         <button type="button" class="btn btn-danger" onClick={()=>{deleteTrainer(trainer)}}>
                                            Delete
                                         </button>&nbsp;&nbsp;
-                                        <button type="button" class="btn btn-light" onClick = {()=>{
+                                        {/* <button type="button" class="btn btn-light" onClick = {()=>{
                                  history.push('/updatetrainer', {trainers:trainer})
                                 }}>
                                            Edit
-                                        </button>
+                                        </button> */}
                                         </td>
                                     
                                     
@@ -272,12 +263,12 @@ const  BranchPage=()=> {
                                     <td>{batch.batchTime}</td>
                                     <td>{batch.batchType}</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger" onClick={()=>{deleteBatch(batches)}}>
+                                        <button type="button" class="btn btn-danger" onClick={()=>{deleteBatch(batch)}}>
                                            Delete
                                         </button>
                                         &nbsp;&nbsp;&nbsp;
                                         <button type="button" class="btn btn-light" onClick={()=>{
-                                 history.push('/updatebatch', {batches:batch})
+                                 history.push('/updatebatch', {batchess:batch})
                                 }}>
                                            Edit
                                         </button>

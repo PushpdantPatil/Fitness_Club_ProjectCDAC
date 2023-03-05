@@ -38,9 +38,6 @@ const  AdminPage=()=> {
 
         <Link to="/allbranches"> <a className="block" href=" ">Branches</a> </Link>
 
-        {/* <Link to="/allbatches"> <a className="block" href=" ">Batches</a> </Link> */}
-
-        <Link to="/allpackages"> <a className="block" href=" ">Packages</a> </Link>
         <hr/>
         <hr/>
         <hr/>
