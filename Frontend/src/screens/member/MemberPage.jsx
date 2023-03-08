@@ -8,12 +8,13 @@ import {useHistory} from 'react-router-dom';
 //import Card from './Card';
 
 const MemberPage = () => {
-  // const [name, setName] = useState("your name");
-  // const [job, setJob] = useState("Job Title");
-  // const [about, setAbout] = useState("About job details for  your name Google Fonts is a library of 1,364 open sourcy");
+  
+  
 
   const history=useHistory();
   const isSignin = useSelector((state) => state.isSignin);
+
+  sessionStorage.setItem('myData', isSignin.user.id);
 
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
@@ -29,28 +30,19 @@ const MemberPage = () => {
       <div align="center" className="admin-page">
         MemberPage
       </div>
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      {/* <UserProfile/> */}
+      
+      <br></br><br></br>
 
-      <Link to="/trainers">   <a className="block" href=" ">          Trainers        </a>      </Link>
+        <button className="block"
+        onClick={()=>{history.push('/purchasepage')}}>Purchase Membership
+        </button>
 
-      <Link to="/branches">   <a className="block" href=" ">          Branches        </a>      </Link>      
-        
-      <Link to="/packages"><a className="block" href=" ">          Packages        </a>      </Link>
+        <button className="block"
+        onClick={()=>{history.push('/addreport')}}>Add Report / View Report
+        </button>
 
       <Link to="/profilemember"><a className="block" href=" ">          Profile        </a>      </Link>
 
-      {/* <div>
-
-          <Card 
-          // name={ name } job={ job } about={ about }
-          />
-        </div> */} 
     </div>
   );
 };
