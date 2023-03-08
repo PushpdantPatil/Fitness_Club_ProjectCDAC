@@ -18,4 +18,6 @@ public interface IMemberService
 		public Member registerMember(Member m);
 
 		public List<Member> getAllmembers();
+
+		public List<Member> getAllmembersFromTrainer(long id);
 }

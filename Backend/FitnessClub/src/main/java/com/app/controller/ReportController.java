@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
 import com.app.pojos.Report;
+import com.app.service.IMailService;
 import com.app.service.IReportService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -22,6 +23,7 @@ public class ReportController
 {
 	@Autowired
 	  private IReportService reps;
+	
 	
 	@PostMapping("/add/{customer_id}")
 	  public ResponseDTO<?> addReport(@RequestBody Report r,@PathVariable long customer_id)
@@ -52,5 +54,6 @@ public class ReportController
 			  return new ResponseDTO<>(HttpStatus.OK, "Report updated successfully", r1);
 		  return new ResponseDTO<>(HttpStatus.NOT_MODIFIED, "Report not updated ", null);
 	  }
+
 	
 }

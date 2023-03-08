@@ -91,14 +91,21 @@ public class MemberServiceImpl implements IMemberService
 		u = urpo.save(u);
 		u.setMember(member);
 		member.setUser(u);
-		//return member;
-		return null;
+		return member;
+		
 	}
 
 	@Override
 	public List<Member> getAllmembers()
 	{
 		return tr.findAll();
+	}
+
+	@Override
+	public List<Member> getAllmembersFromTrainer(long id) 
+	{
+		Trainer trai = trpo.findById(id).get();
+		return tr.findByTrainer(trai);
 	}
 	
 	

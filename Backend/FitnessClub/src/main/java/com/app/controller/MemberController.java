@@ -73,5 +73,11 @@ public class MemberController
 			return new ResponseDTO<>(HttpStatus.OK,"Users Found ",memService.getAllmembers());
 	  }
 	  
-		
+	  @GetMapping("/trainmembers/{id}")
+	  public ResponseDTO<?> getAllMembersFromSameTrainer(@PathVariable long id) 
+	  {
+			System.out.println("in get all members");
+			return new ResponseDTO<>(HttpStatus.OK,"Users Found ",memService.getAllmembersFromTrainer(id));
+	  }
+	  
 }

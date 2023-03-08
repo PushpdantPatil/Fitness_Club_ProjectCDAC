@@ -92,6 +92,15 @@ public class TrainerServiceImpl implements ITrainerService
 	{
 		return tr.findAll();
 	}
+
+	@Override
+	public List<Trainer> getAlltrainers(long branchId)
+	{
+		Branch br = brpo.findById(branchId).get();
+		return tr.findByBranch(br);
+	}
+	
+	
 	
 	
 }

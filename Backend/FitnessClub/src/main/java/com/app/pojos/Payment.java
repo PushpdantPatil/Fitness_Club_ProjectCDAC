@@ -28,6 +28,48 @@ public class Payment extends BaseEntity
 	@OneToOne
 	@JoinColumn(name="package")
 	private Packages packages;
+
+	public Payment(double amount, LocalDateTime paymentDate, Member member, Packages packages) {
+		super();
+		this.amount = amount;
+		this.paymentDate = paymentDate;
+		this.member = member;
+		this.packages = packages;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public LocalDateTime getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(LocalDateTime paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Packages getPackages() {
+		return packages;
+	}
+
+	public void setPackages(Packages packages) {
+		this.packages = packages;
+	}
+	
+	
 	
 	
 }

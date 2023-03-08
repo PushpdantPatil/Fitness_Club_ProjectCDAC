@@ -52,8 +52,8 @@ public class BranchController
 	  {
 		 List<Branch> m1 = branchServ.getBranches();
 		  if(m1!=null)
-			  return new ResponseDTO<>(HttpStatus.OK,"Branch Added ",m1);
-		  return new ResponseDTO<>(HttpStatus.FAILED_DEPENDENCY,"Branch not added ",m1);
+			  return new ResponseDTO<>(HttpStatus.OK,"Found Branches ",m1);
+		  return new ResponseDTO<>(HttpStatus.NOT_FOUND,"Do not found any branches",m1);
 	  }
 	
 	

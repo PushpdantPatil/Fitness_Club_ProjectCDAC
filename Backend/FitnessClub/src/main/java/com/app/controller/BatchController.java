@@ -50,6 +50,7 @@ public class BatchController
 	public  ResponseDTO<?> updateBatch(@RequestBody Batch batch,@PathVariable long id) { 
 		System.out.println("in update batch "+batch+" id "+id);
 		Batch b= batchService.updateBatch(batch,id);
+		
 		return new ResponseDTO<>(HttpStatus.OK,"Batch updated successfully", b);
 	}
 

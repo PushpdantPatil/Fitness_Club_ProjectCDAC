@@ -32,14 +32,14 @@ public class TrainerController
 	
 	  
 	  @PostMapping("/add/{branch_id}")
-	  public Trainer addTrainer(@RequestBody Trainer m,@PathVariable long branch_id)
+	  public ResponseDTO<?> addTrainer(@RequestBody Trainer m,@PathVariable long branch_id)
 	  {
 		  System.out.println("Trainer is "+m);
-		  Trainer m1 = trainer.registerTrainer(m,branch_id);
-		  System.out.println(m1);
-		  if(m1!=null)
-		  return m1;
-		  return null;
+		  Trainer trainers = trainer.registerTrainer(m,branch_id);
+		  System.out.println(trainers);
+		  if(trainers!=null)
+			  return  new ResponseDTO<>(HttpStatus.OK,"Trainer Added ",trainers);
+		  return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"Trainer not Added ",new RuntimeException("Trainer not added"));
 	  }
 	  
 	  @DeleteMapping("/delete/trainer/{id}")
@@ -56,5 +56,12 @@ public class TrainerController
 		  {
 				System.out.println("in get all trainers");
 				return new ResponseDTO<>(HttpStatus.OK,"Users Found ",trainer.getAlltrainers());
+		  }
+		
+		@GetMapping("/trainers/{branchId}")
+		  public ResponseDTO<?> getAlltrainersFromBranch(@PathVariable long branchId) 
+		  {
+				System.out.println("in get all trainers of branch");
+				return new ResponseDTO<>(HttpStatus.OK,"Users Found ",trainer.getAlltrainers(branchId));
 		  }
 }

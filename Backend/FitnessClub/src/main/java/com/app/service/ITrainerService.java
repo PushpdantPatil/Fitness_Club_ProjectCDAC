@@ -16,4 +16,6 @@ public interface ITrainerService
 	public Trainer setMembersNull(long id);
 
 	public List<Trainer> getAlltrainers();
+
+	public List<Trainer> getAlltrainers(long branchId);
 }

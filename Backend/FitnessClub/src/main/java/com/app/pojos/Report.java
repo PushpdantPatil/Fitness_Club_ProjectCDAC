@@ -63,6 +63,14 @@ public class Report extends BaseEntity {
 
 
 
+	public Report(double height, double weight) {
+		super();
+		this.height = height;
+		this.weight = weight;
+	}
+
+
+
 	public double getHeight() {
 		return height;
 	}

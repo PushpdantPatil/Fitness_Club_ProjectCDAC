@@ -21,6 +21,9 @@ public class ReportServiceImpl implements IReportService
 	@Autowired
 	MemberRepository memo;
 	
+	@Autowired
+	  private IMailService mail;
+	
 	@Override
 	public Report registerReport(Report r, long customer_id) 
 	{
@@ -40,6 +43,8 @@ public class ReportServiceImpl implements IReportService
 		ro.setWeight(r.getWeight());
 		ro.setWorkout(r.getWorkout());
 		ro.setDiet(r.getDiet());
+		
+		mail.sendMailToMembersOfTrainer(member,member.getTrainer(),ro);
 		return repo.save(ro);
 	}
 
