@@ -4,7 +4,7 @@ const Lazy = () => {
     return (
         <div className="lazy-load">
             <h1 className="lazy-heading">
-                Prime-Fit
+                FitnessClub
             </h1>
             <br/>
             <span className="lazy-loading">

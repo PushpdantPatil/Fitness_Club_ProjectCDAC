@@ -11,7 +11,7 @@ const Purchasepage = () => {
 
     const isSignin = useSelector((state) => state.isSignin);
     const location = useLocation();
-    const member = sessionStorage.getItem('myData');
+    const member = localStorage.getItem('myData');
     const history = useHistory(); 
 
 
@@ -24,7 +24,11 @@ const Purchasepage = () => {
     const[branches,setBranches] = useState([]);
 
 
-
+    const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
 useEffect(() => {
 

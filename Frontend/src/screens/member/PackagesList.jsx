@@ -1,25 +1,24 @@
 import React from "react";
+//import {Link} from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { url } from "../../common/constant";
+//import $ from "jquery";
 import Logout from '../../screens/common/Logout';
  import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useLocation} from "react-router";
+//import { useHistory } from "react-router-dom";
+//import { useSelector } from "react-redux";
 
 const AllPackages = () => {
-    const history=useHistory();
-  const isSignin = useSelector((state) => state.isSignin);
-  
-  const location = useLocation();
-  const branchData = location.state.branchId;
     const [packages, setPackage] = useState([]);
-    const loginStatus = sessionStorage.getItem('LoginStatus');
-    if( loginStatus != 1){
-        alert('please signin first!!')
-        history.push('/login')
-      }
+   // const history = useHistory();
+
+    //const isLogIn = useSelector((state) => state.isSignin);
+
+    // if(isLogIn.status === false){
+    //     alert('please signin first!!')
+    //     history.push('/signin')
+    //   }
 
     useEffect(() => {
         console.log("User component is mounted");
@@ -28,7 +27,7 @@ const AllPackages = () => {
     } , []);
 
     const getPackage = () => {
-        axios.get(url+"/packages/branch/"+branchData).then((response) => {
+        axios.get(url+"/packages/package").then((response) => {
             const result = response.data;
             console.log(result);
             if (result.status === "OK" ) {
@@ -39,13 +38,12 @@ const AllPackages = () => {
         });
     }
 
+    
+
     return(
         <div className="privacydiv">
             <Logout/>
             {/* <Link to="/addpackage" className="btn btn-warning"> Add Package </Link> */}
-            <button className="btn btn-warning"
-        onClick={()=>{history.push('/packageadd',{branchId:isSignin.user.branch.id})}}> Add Packages
-        </button>
             <h1 align="center">All Packages</h1> 
             <table className="table">
                 <thead class="thead-dark">
@@ -65,8 +63,8 @@ const AllPackages = () => {
                                 <tr key={packag.id}>
                                     <td>{packag.id}</td>
                                     <td>{packag.packageName}</td>
-                                    <td>{packag.description}</td>
-                                    <td>{packag.price}</td>                              
+                                    <td>{packag.packageDescription}</td>
+                                    <td>{packag.packagePrice}</td>                              
                                    
                                 
                                 </tr>
@@ -75,7 +73,7 @@ const AllPackages = () => {
                     }
                 </tbody>
             </table>  
-            <Link to="/localadminpage">
+            <Link to="/memberpage">
                &nbsp;&nbsp; <button className="btn btn-primary">Back</button>
             </Link>
         </div>

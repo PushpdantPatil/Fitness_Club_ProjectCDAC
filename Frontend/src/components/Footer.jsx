@@ -1,12 +1,4 @@
 import React from 'react';
-// import { FaFacebook, FaTwitter, FaInstagram, FaSnapchat } from 'react-icons/fa';
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//     faYoutube,
-//     faFacebook,
-//     faTwitter,
-//     faInstagram
-// } from "@fortawesome/free-brands-svg-icons";
 
 import { Link } from 'react-router-dom';
 const Footer = () => {
@@ -20,34 +12,10 @@ const Footer = () => {
                     </Link>
                     
                 </strong>
-                {/* <div class="social-container">
-                    <a href="https://www.youtube.com/"
-                        target='blank'
-                        className="youtube social">
-                        <FontAwesomeIcon icon={faYoutube} size="4x" />
-                    </a>
-                    <a href="https://www.facebook.com/Prime-Fit-125463350053201"
-                        target='blank'
-                        className="facebook social">
-                        <FontAwesomeIcon icon={faFacebook} size="4x" />
-                    </a>
-                    <a href="https://www.twitter.com/PrimeFit8"
-                        target='blank'
-                        className="twitter social">
-                        <FontAwesomeIcon icon={faTwitter} size="4x" />
-                    </a>
-                    <a href="https://www.instagram.com/prime_fit8"
-                        target='blank'
-                        className="instagram social">
-                        <FontAwesomeIcon icon={faInstagram} size="4x" />
-                    </a>
-                </div> */}
-
-
 
                 <div className="footer-sub location">
                     <strong className="footer-subheading">Location</strong>
-                    <strong className="footer-desc">216, Main Road, Sangli, IN-416416</strong>
+                    <strong className="footer-desc"></strong>
                     <strong className="footer-desc">Monday Through Thursday (6AM to 8PM)</strong>
                     <strong className="footer-desc">Friday (6AM to 6PM)</strong>
                 </div>
@@ -74,18 +42,7 @@ const Footer = () => {
                         <small> Nutriotional Guidances</small>
                         <small> Weight Loss Program</small>
                     </div>
-                    <div className="footer-sub">
-                        {/* <strong className="footer-subheading">
-                            <a href="/privacypolicy">Privacy Policy</a></strong> */}
-
-                        <Link to={"/privacypolicy"} href="/privacypolicy">
-                            <strong className="footer-subheading">Privacy Policy </strong>
-                        </Link>
-                        <Link to={"/termsofservice"} href="/termsofservice">
-                            <strong className="footer-subheading">Terms of Service </strong>
-                        </Link>
-
-                    </div>
+                   
                     
                 </div>
 
@@ -96,10 +53,3 @@ const Footer = () => {
 }
 
 export default Footer;
-// export default function SocialFollow() {
-//     return (
-//       <div class="social-container">
-//         <h3>Social Follow</h3>
-//       </div>
-//     );
-//   }

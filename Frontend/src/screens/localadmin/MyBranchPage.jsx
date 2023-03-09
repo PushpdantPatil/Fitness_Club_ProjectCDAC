@@ -16,16 +16,15 @@ const  BranchPage=()=> {
   
   const location = useLocation();
   const branchData = location.state.branchId;
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
 
-  // if(isSignin.status === false){
-  //   alert('please signin first!!')
-  //   history.push('/login')
-  // }
-
- // const [branch, setBranchId] = useState("");
   const [members, setMember] = useState([]);
   const [trainers, setTrainer] = useState([]);
   const [batches, setBatch] = useState([]);

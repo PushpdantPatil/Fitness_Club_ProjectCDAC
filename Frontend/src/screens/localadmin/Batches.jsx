@@ -12,13 +12,11 @@ import { useHistory } from "react-router-dom";
 const AllBatches = () => {
     const [batches, setBatch] = useState([]);
     const history = useHistory();
-
-    //const isLogIn = useSelector((state) => state.isSignin);
-
-    // if(isLogIn.status === false){
-    //     alert('please signin first!!')
-    //     history.push('/signin')
-    //   }
+    const loginStatus = sessionStorage.getItem('LoginStatus');
+    if( loginStatus != 1){
+        alert('please signin first!!')
+        history.push('/login')
+      }
 
     useEffect(() => {
         console.log("branch component is mounted");

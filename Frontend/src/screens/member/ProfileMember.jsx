@@ -23,8 +23,11 @@ const [firstName, setFname] = useState("");
   //const [role, setRole] = useState("");
   const [userBranchId, setUserBranchId] = useState("");
   const history = useHistory();
-
-
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
   console.log(user);
   const { id } = useParams(); 
@@ -34,8 +37,6 @@ const [firstName, setFname] = useState("");
     setEmail(user.user.email);
     setPassword(user.user.password);
     setPhone(user.user.phoneNo);
-    // setRole(user.user.role);
-    //setUserBranchId(user.user.branch.branchName);
 
 
     
@@ -69,11 +70,6 @@ const [firstName, setFname] = useState("");
       </div>
       <div>
         <hr/>
-        {/* <button type="button" class="btn btn-light" onClick={()=>{
-                                 history.push('/updatebatch', {user:user})
-                                }}>
-                                           Edit
-                                        </button> */}
                                         <Link to="/memberpage">
                &nbsp;&nbsp; <button className="btn btn-primary">Back</button>
             </Link>

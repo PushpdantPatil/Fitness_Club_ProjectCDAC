@@ -11,7 +11,7 @@ const AddReport = () => {
 
     const isSignin = useSelector((state) => state.isSignin);
     const location = useLocation();
-    const memberData = sessionStorage.getItem('myData');
+    const memberData = localStorage.getItem('myData');
     const history = useHistory(); 
 
     const [height, setHeight] = useState("");
@@ -19,6 +19,12 @@ const AddReport = () => {
     const [workout, setWorkout] = useState("");
     const [diet, setDiet] = useState("");
     const[report,setReport] = useState("");
+
+    const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
     useEffect(() => {
 
@@ -35,9 +41,6 @@ const AddReport = () => {
                 alert("Report not updated");
             }
         }) 
-    
-        
-      
     } , []);
 
     const addReport = () => {

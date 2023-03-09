@@ -3,26 +3,22 @@ import { Link } from "react-router-dom";
 import Logout from '../../screens/common/Logout';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-//import './MemberPage.css';
-//import UserProfile from './UserProfile';
-//import Card from './Card';
 
 const MemberPage = () => {
   
+
+ const loginStatus = sessionStorage.getItem('LoginStatus');
   
-
+ 
   const history=useHistory();
-  const isSignin = useSelector((state) => state.isSignin);
-
-  sessionStorage.setItem('myData', isSignin.user.id);
-
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-  console.log(isSignin.user);
-
-  if(isSignin.status === false){
-    alert('please signin first!!') 
+  if( loginStatus != 1){
+    alert('please signin first!!')
     history.push('/login')
   }
+  const isSignin = useSelector((state) => state.isSignin);
+
+  localStorage.setItem('myData', isSignin.user.id);
+
   
   return (
     <div className="privacydiv">

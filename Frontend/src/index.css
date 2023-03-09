@@ -326,10 +326,10 @@ body {
 .hero-video{
   height: 100%;
   width:100%;
-  object-fit: cover;
+   object-fit:fill; 
   object-position: center;
   opacity: 1;
-  filter: sepia(1) brightness(.47);  
+  filter: sepia(1) brightness(.90);  
 }
 
 .hero-heading-sub{
@@ -514,7 +514,7 @@ body {
 
 
 .price{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0,0,0,.95)), url('./assets/price_page.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0,0,0,.95));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top left;
@@ -526,14 +526,14 @@ body {
 .heading-section{
   font-size: 3rem;
   text-align: center;
-  color: transparent;
+  color: red;
   background-image: linear-gradient(to right bottom, var(--green), var(--red));
   background-blend-mode: hue;
   background-clip: text;
   margin: 4rem 1rem;
   font-family: 'Black Ops One';
   position: relative;
-  filter: brightness(200%);
+  filter: brightness(100%);
 
 }
 .heading-section::after{
@@ -569,7 +569,7 @@ body {
 }
 .individual__price{
   margin: 1rem;
-  background-image: linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.75)),url('./assets/price_page.jpg');
+  background-image: linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.75));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right center;
@@ -765,11 +765,11 @@ body {
   height: 150vh;
   margin-top: -25rem;
   padding-top: 35rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5),rgba(3, 3, 3, 0.86)) ,url('./assets/img1.jpg');
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5),rgba(230, 228, 228, 0.86));
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  color: #777;
+  color: rgb(0, 0, 0);
 }
 
 .contact .heading-section{
@@ -795,7 +795,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ddd;
+  color: rgb(221, 37, 37);
 }
 .contact-paragraph{
   font-size: 1.75rem;
@@ -807,7 +807,7 @@ body {
   transition: all .2s;
 }
 .contact-section:nth-child(3) > .contact-paragraph:hover{
-  color: white;
+  color: rgb(31, 231, 234);
 }
 
 @media (min-width:800px){
@@ -832,12 +832,13 @@ body {
   margin-top: -15rem;
   position: relative;
   padding: 12rem 2rem 2rem 2rem;
+  background-color: rgb(66, 55, 55);
 }
 .about-content{
   color: #777;
 }
 
-.about-page-hero{
+/* .about-page-hero{
   height: 100%;
   width:100%;
   object-fit: cover;
@@ -847,7 +848,7 @@ body {
   left: 0;
   filter: grayscale(1) brightness(20%);
   z-index: -5;
-}
+} */
 
 .about-section{
   min-height: 30vh;
@@ -1346,7 +1347,7 @@ body {
 /* --------------------- FitArmy Page --------------------------------- */
 /* -------------------------------------------------------------------- */
 
-.fit-army-container{
+/* .fit-army-container{
   margin-top: -15rem;
 }
 .fit-army-hero{
@@ -1572,7 +1573,7 @@ body {
   .review-name{
     border-top: none;
   }
-}
+} */
 
 /* .footer-icons{
   width:75%;

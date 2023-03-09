@@ -66,11 +66,6 @@ const [firstName, setFname] = useState("");
       </div>
       <div>
         <hr/>
-        {/* <button type="button" class="btn btn-light" onClick={()=>{
-                                 history.push('/updatebatch', {user:user})
-                                }}>
-                                           Edit
-                                        </button> */}
                                         <Link to="/trainerpage">
                &nbsp;&nbsp; <button className="btn btn-primary">Back</button>
             </Link>

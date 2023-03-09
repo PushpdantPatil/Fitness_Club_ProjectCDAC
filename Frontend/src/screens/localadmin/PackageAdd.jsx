@@ -19,6 +19,11 @@ const AddPackage = () => {
   const [packagePrice, setPrice] = useState("");
   const [packageDescription, setDescription] = useState("");
  
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
   const addPackage = () => {
     if (packageName === '') {
@@ -107,18 +112,6 @@ const AddPackage = () => {
         </div>
       </div>
      
-      <div className="form-group row">
-        <div className="col-sm-8 offset-sm-2">
-          <div className="form-check">
-            {/* <input className="form-check-input" type="checkbox" id="check5" /> */}
-            {/* <div className="col-sm-12 text-center">
-            <label className="form-check-label" for="check5" align="middle">
-              By clicking register you agree with the terms and conditions.
-            </label>
-            </div> */}
-          </div>
-        </div>
-      </div>
       <div>
         <div className="col-sm-12 text-center">
           <button className="btn btn-primary" onClick={addPackage}>
