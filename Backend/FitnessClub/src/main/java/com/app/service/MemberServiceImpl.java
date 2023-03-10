@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.app.pojos.Branch;
@@ -86,6 +87,7 @@ public class MemberServiceImpl implements IMemberService
 	@Override
 	public Member registerMember(Member m) 
 	{
+		m.setPassword(BCrypt.hashpw(m.getPassword(), BCrypt.gensalt()));
 		Member member = tr.save(m);
 		User u = new User(member.getEmail(),member.getPassword(),member.getRole());
 		u = urpo.save(u);

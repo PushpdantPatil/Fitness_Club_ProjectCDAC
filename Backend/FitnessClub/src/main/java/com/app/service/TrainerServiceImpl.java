@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -40,6 +41,7 @@ public class TrainerServiceImpl implements ITrainerService
 	@Override
 	public Trainer registerTrainer(Trainer t,long id) 
 	{
+		t.setPassword(BCrypt.hashpw(t.getPassword(), BCrypt.gensalt()));
 		Trainer tt = tr.save(t);
 		Branch bb = brpo.findById(id).orElseThrow();
 		tt.setBranch(bb);

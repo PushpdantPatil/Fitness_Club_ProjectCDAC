@@ -17,4 +17,6 @@ public interface IMailService
 
 	void sendMailToMembersOfTrainer(Member member, Trainer trainer, Report ro);
 
+	void sendWelcomeMailToMembers(Member member);
+
 }

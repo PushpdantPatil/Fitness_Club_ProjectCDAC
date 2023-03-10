@@ -7,6 +7,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.app.pojos.Branch;
@@ -36,6 +37,7 @@ public class ManagerService implements IManagerService
 	@Override
 	public Manager registerManager(Manager m,long id) 
 	{
+		m.setPassword(BCrypt.hashpw(m.getPassword(), BCrypt.gensalt()));
 		Manager mm = mr.save(m);
 		Branch bb = brpo.findById(id).orElseThrow();
 		mm.setBranch(bb);
@@ -84,6 +86,7 @@ public class ManagerService implements IManagerService
 	@Override
 	public Manager registerManager(Manager m) 
 	{
+		m.setPassword(BCrypt.hashpw(m.getPassword(), BCrypt.gensalt()));
 		Manager mm = mr.save(m);
 		User u = new User(mm.getEmail(),mm.getPassword(),mm.getRole());
 		u = urpo.save(u);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
 import com.app.pojos.Member;
+import com.app.service.IMailService;
 import com.app.service.IMemberService;
 import com.app.service.IUserService;
 
@@ -27,6 +28,8 @@ public class MemberController
 	
 	@Autowired
 	  private IUserService us;
+	@Autowired
+	  private IMailService mail;	
 	  
 	  @PostMapping("/add/{branch_id}")
 	  public ResponseDTO<?> addMemberToBranch(@RequestBody Member m,@PathVariable long branch_id)
@@ -35,7 +38,10 @@ public class MemberController
 		  Member member = memService.registerMember(m,branch_id);
 		  System.out.println(member);
 		  if(member!=null)
+		  {
+			  mail.sendWelcomeMailToMembers(member);
 			  return  new ResponseDTO<>(HttpStatus.OK,"Member Added ",member);
+		  }
 		  return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"Member not Added ",new RuntimeException("Member not added"));
 	  }
 	  
@@ -46,7 +52,10 @@ public class MemberController
 		  Member member = memService.registerMember(m);
 		  System.out.println(member);
 		  if(member!=null)
+		  {
+			  mail.sendWelcomeMailToMembers(member);
 			  return  new ResponseDTO<>(HttpStatus.OK,"Member Added ",member);
+		  }		 
 		  return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"Member not Added ",new RuntimeException("Member not added"));
 	  }
 	  

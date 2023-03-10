@@ -33,7 +33,7 @@ public class MailServiceImpl implements IMailService
 			MimeMessageHelper helper = new MimeMessageHelper(message);
 			helper.setFrom("pushpdantpatil14@gmail.com");
 			helper.setTo(man.getEmail());
-			String text = "Hello "+man.getFirstName()+"Welcome To FitnessClub";
+			String text = "Hello "+man.getFirstName()+" Welcome To FitnessClub";
 			helper.setText(text);
 			javamailsender.send(message);
 			
@@ -94,6 +94,28 @@ public class MailServiceImpl implements IMailService
 		}
 		
 	}
+
+	@Override
+	public void sendWelcomeMailToMembers(Member member)
+	{
+		try
+		{
+			MimeMessage message = javamailsender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message);
+			helper.setFrom("pushpdantpatil14@gmail.com");
+			helper.setTo(member.getEmail());
+			String text = "Hello "+member.getFirstName()+member.getLastName()+" Welcome To FitnessClub.Check out our exciting packages and Trainers and purchase membership to get started ";
+			helper.setText(text);
+			javamailsender.send(message);
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 	
 }
