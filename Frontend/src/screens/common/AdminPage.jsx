@@ -8,8 +8,11 @@ const  AdminPage=()=> {
   const history=useHistory();
   const isSignin = useSelector((state) => state.isSignin);
 
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-  console.log(isSignin.user);
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
+    alert('please signin first!!')
+    history.push('/login')
+  }
 
   if(isSignin.status === false){
     alert('please signin first!!')

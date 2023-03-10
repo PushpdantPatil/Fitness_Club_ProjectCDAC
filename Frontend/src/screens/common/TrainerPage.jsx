@@ -12,7 +12,8 @@ const  TrainerPage=()=> {
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
 
-  if(isSignin.status === false){
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
     alert('please signin first!!')
     history.push('/login')
   }

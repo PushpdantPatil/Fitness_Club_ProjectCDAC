@@ -13,12 +13,13 @@ import { LoginAction } from "../../actions/LoginAction";
 
 
 
+
 const SignIn = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const history = useHistory()  //to redirect to another component
-  const dispatch = useDispatch()  //to dispatch the action
+  const history = useHistory()  
+  const dispatch = useDispatch()  
 
 const UserLogin = () => { 
   if (email.length === 0) {
@@ -36,6 +37,7 @@ const UserLogin = () => {
       const result = response.data;
       dispatch(LoginAction(result.response));
       if (result.status === "OK" && result.role === "ADMIN") {
+        sessionStorage.setItem('LoginStatus',1);
         
         Swal.fire({
           icon: 'success',
@@ -44,11 +46,11 @@ const UserLogin = () => {
           timer: 1500
         })
         history.push('/adminpage')
-       // alert("LoginAs "+email+" Successfully")
         
       } 
       
       else if (result.status === "OK" && result.role === "MANAGER") {
+        sessionStorage.setItem('LoginStatus',1);
         Swal.fire({
           icon: 'success',
           title: 'LoginAs '+email+' Successfully',
@@ -59,6 +61,7 @@ const UserLogin = () => {
       }
 
       else if (result.status === "OK" && result.role === "TRAINER") {
+        sessionStorage.setItem('LoginStatus',1);
         Swal.fire({
           icon: 'success',
           title: 'LoginAs '+email+' Successfully',
@@ -69,6 +72,7 @@ const UserLogin = () => {
       }
 
       else if (result.status === "OK" && result.role === "MEMBER") {
+        sessionStorage.setItem('LoginStatus',1);
         Swal.fire({
           icon: 'success',
           title: 'LoginAs '+email+' Successfully',
@@ -88,10 +92,6 @@ const UserLogin = () => {
         footer: '<a href="/admin/signin">Why do I have this issue?</a>'
       })
 
-
-
-        // console.log(result.message);
-        // alert("User not found...plz try again!!");
       }
     });
   }
@@ -138,7 +138,7 @@ const UserLogin = () => {
             <button  type="button" class="btn btn-primary" onClick={UserLogin}>
               Sign in 
             </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {/* <Link to="/register" className="btn btn-warning"> SignUp </Link> */}
+             <Link to="/register" className="btn btn-success"> SignUp </Link> 
           </div>
         </div>
       

@@ -10,10 +10,9 @@ const  LocalAdminPage=()=> {
   const history=useHistory();
   const isSignin = useSelector((state) => state.isSignin);
 
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-  console.log(isSignin.user);
-  // console.log("yyyyy"+isSignin.user.branch.id);
-  if(isSignin.status === false){
+
+  const loginStatus = sessionStorage.getItem('LoginStatus');
+  if( loginStatus != 1){
     alert('please signin first!!')
     history.push('/login')
   }
@@ -21,7 +20,7 @@ const  LocalAdminPage=()=> {
     <div className="privacydiv">
         <Logout/>
         <div align="center" className="admin-page">
-      Local Admin Page
+      Manager Page
       </div>
       <hr/>
         <hr/>
@@ -34,7 +33,6 @@ const  LocalAdminPage=()=> {
         onClick={()=>{history.push('/mybranchpage',{branchId:isSignin.user.branch.id})}}>Branch Page
         </button>
 
-        {/* <Link to="/brancheslist"> <a className="block" href=" ">Branches</a> </Link> */}
 
 
         <button className="block"

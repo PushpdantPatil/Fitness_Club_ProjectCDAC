@@ -3,22 +3,14 @@ import {Link} from 'react-router-dom';
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { url } from "../../common/constant";
-//import $ from "jquery";
+
 import Navbar from "../../components/Navbar";
-// import { Link } from "react-router-dom";
+
 import { useHistory } from "react-router-dom";
-//import { useSelector } from "react-redux";
 
 const AllBranches = () => {
     const [branches, setBranch] = useState([]);
     const history = useHistory(); 
-
-    //const isLogIn = useSelector((state) => state.isSignin);
-
-    // if(isLogIn.status === false){
-    //     alert('please signin first!!')
-    //     history.push('/signin')
-    //   }
 
     useEffect(() => {
         console.log("branch component is mounted");
@@ -49,18 +41,6 @@ const AllBranches = () => {
             }
         })
     }
-
-    // const updateBranch = (branch) => {
-    //     console.log(branch.id);
-    //     axios.put(url+"/branches/update").then((response) => {
-    //         const result = response.data;
-    //         if(result.status === "OK"){
-    //             getBranch();
-    //         }else{
-    //             alert("error while updating branch");
-    //         }
-    //     })
-    // }
 
     return(
         <div className="privacydiv">

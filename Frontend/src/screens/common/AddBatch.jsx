@@ -17,12 +17,10 @@ const AddBatch = () => {
       alert("batchTime  cant be left empty");
     } else {
       let data = {
-       // branch:branch,
         batchTime: batchTime,
         batchType: batchType,
       };
       console.log(data);
-      // SENDS DATA TO THE API
 
       axios.post(url+"/batches/add/"+branch,data).then((response) => {
         const result = response.data;
@@ -44,30 +42,6 @@ const AddBatch = () => {
     <div className="privacydiv">
       <Logout />
 
-      
-      {/* <div className="col-sm-12">
-
-      <div className="form-group row">
-          <label
-            for="email5"
-            className="col-sm-2 col-form-label"
-            align="middle">
-            Branch Id
-          </label>
-          <div className="col-sm-3">
-            <input
-              type="text"
-              className="form-control"
-              id="fname"
-              value="2"
-              disabled
-              onChange={(event) => {
-                setBatchBranchId(event.target.value);
-              }}
-              required
-            />
-          </div>
-        </div> */}
 
 <div className="form-group row">
           <label

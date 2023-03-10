@@ -20,23 +20,12 @@ const  BranchPage=()=> {
   console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   console.log(isSignin.user);
 
-  // if(isSignin.status === false){
-  //   alert('please signin first!!')
-  //   history.push('/login')
-  // }
 
 
   const [members, setMember] = useState([]);
   const [trainers, setTrainer] = useState([]);
   const [batches, setBatch] = useState([]);
-   // const history = useHistory();
-
-    //const isLogIn = useSelector((state) => state.isSignin);
-
-    // if(isLogIn.status === false){
-    //     alert('please signin first!!')
-    //     history.push('/signin')
-    //   }
+   
 
     useEffect(() => {
         console.log("User component is mounted");
@@ -53,7 +42,7 @@ const  BranchPage=()=> {
       let data ={
         role:"MEMBER"
       }
-        axios.post(url+"/users/usersbyid/"+branchData.id,data).then((response) => {
+        axios.post(url+"/manager/members/"+branchData.id,data).then((response) => {
 
             const result = response.data;
             console.log(result);
@@ -71,7 +60,7 @@ const  BranchPage=()=> {
       let data ={
         role:"TRAINER"
       }
-        axios.post(url+"/users/usersbyid/"+branchData.id,data).then((response) => {
+        axios.post(url+"/manager/trainers/"+branchData.id,data).then((response) => {
 
             const result = response.data;
             console.log(result);
@@ -102,10 +91,7 @@ const  BranchPage=()=> {
     <div className="privacydiv">
        
        <div className="privacydiv">
-             <Logout/>
-             {/* <Link to="/register" className="btn btn-warning"> Add Member </Link> */}
-
-            
+             <Logout/> 
              
              <h1 align="center" >{branchData.branchName} Page </h1> 
              <hr/>
@@ -136,9 +122,7 @@ const  BranchPage=()=> {
                                     <td>{member.firstName}</td>
                                     <td>{member.lastName}</td>
                                     <td>{member.email}</td>                                
-                                    <td>{member.phone}</td>
-                                    {/* <td>{member.branch}</td> */}
-                                    {/* <td>{member.userBatchId}</td> */}
+                                    <td>{member.phoneNo}</td>
                                     
                                 </tr>
                             )
@@ -175,7 +159,7 @@ const  BranchPage=()=> {
                                     <td>{trainer.firstName}</td>
                                     <td>{trainer.lastName}</td>
                                     <td>{trainer.email}</td>                                
-                                    <td>{trainer.phone}</td>
+                                    <td>{trainer.phoneNo}</td>
                                     
                                     
                                 </tr>
