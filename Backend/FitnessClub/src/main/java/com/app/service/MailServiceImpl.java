@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.app.dto.InvoiceDto;
 import com.app.pojos.Branch;
 import com.app.pojos.Manager;
 import com.app.pojos.Member;
@@ -113,6 +114,28 @@ public class MailServiceImpl implements IMailService
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void sendPayementInvoice(InvoiceDto invc)
+	{
+		try
+		{
+			MimeMessage message = javamailsender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message);
+			helper.setFrom("pushpdantpatil14@gmail.com");
+			helper.setTo(invc.getMember().getEmail());
+			String text = "Hello "+invc.getMember().getFirstName()+" Welcome To FitnessClub "+" Detailed Invoice: " +
+			"\n"+ invc.getPaymentId() +" "+ invc.getAmount() + " "+invc.getPaymentDate() + " "+ invc.getPackages() ;
+			helper.setText(text);
+			javamailsender.send(message);
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	
 	

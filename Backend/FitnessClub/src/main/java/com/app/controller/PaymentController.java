@@ -13,6 +13,7 @@ import com.app.dto.InvoiceDto;
 import com.app.dto.PurchaseDto;
 import com.app.dto.ResponseDTO;
 import com.app.pojos.Member;
+import com.app.service.IMailService;
 import com.app.service.IPayamentService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,10 +25,14 @@ public class PaymentController
 	@Autowired
 	   private IPayamentService payment;
 	
+	 @Autowired
+	  private IMailService mail;
+	
 	 @PostMapping("/add/{memberId}")
 	  public ResponseDTO<?> makePayment(@RequestBody PurchaseDto purchase,@PathVariable long memberId)
 	  {
 		  InvoiceDto invc = payment.purchaseMembership(purchase,memberId);
+		  mail.sendPayementInvoice(invc);
 		  return new ResponseDTO<>(HttpStatus.OK,"Payment Done ",invc);	 
 	  }
 	 

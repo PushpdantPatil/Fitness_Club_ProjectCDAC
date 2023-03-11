@@ -28,7 +28,7 @@ public class UserController
 {
 
 	@Autowired
-	IUserService ii;
+	IUserService userserv;
 	
 	@Autowired
 	private IManagerService mm;
@@ -46,29 +46,36 @@ public class UserController
 	@PostMapping("/signin")
 	public LoginResponse<?> validateUser(@RequestBody User u)
 	{
-		User o =ii.validate(u);
-		if(o.getRole()==Role.ADMIN)
+		User o =userserv.validate(u);
+		try
 		{
-			Manager man = mm.findByUserId(o);
-			return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
-		}
-		if(o.getRole()==Role.MANAGER)
+			if(o.getRole()==Role.ADMIN)
+			{
+				Manager man = mm.findByUserId(o);
+				return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+			}
+			if(o.getRole()==Role.MANAGER)
+			{
+				Manager man = mm.findByUserId(o);
+				return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+			}
+			if(o.getRole()==Role.TRAINER)
+			{
+				Trainer man = imas.findByUserId(o);
+				return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+			}
+			
+			if(o.getRole()==Role.MEMBER)
+			{
+				Member man = ms.findByUserId(o);
+				return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+			}
+			return null;
+		}catch(Exception e)
 		{
-			Manager man = mm.findByUserId(o);
-			return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
-		}
-		if(o.getRole()==Role.TRAINER)
-		{
-			Trainer man = imas.findByUserId(o);
-			return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
+			return new LoginResponse(HttpStatus.NOT_FOUND, "User not found", null, null);
 		}
 		
-		if(o.getRole()==Role.MEMBER)
-		{
-			Member man = ms.findByUserId(o);
-			return new LoginResponse<>(HttpStatus.OK,"user found ",man,man.getRole());
-		}
-		return null;
 	}
 	
 	

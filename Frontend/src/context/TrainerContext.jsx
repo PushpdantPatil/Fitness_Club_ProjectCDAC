@@ -17,8 +17,8 @@ const TrainerContextProvider = (props) => {
     const trainer_data = [
         {
             id: 1,
-            name: 'Michelle Ortega',
-            gender: `female`,
+            name: 'Manish Advilkar',
+            gender: `male`,
             pic: t1,
             type: 'gym',
             qualification: 'Personal Trainer (ACE-CPT)',
@@ -27,13 +27,13 @@ const TrainerContextProvider = (props) => {
          },
         {
             id: 2,
-            name: 'Stacy Morgan',
+            name: 'Anupriya Kapur',
             gender: `female`,
             pic: t2,
             type: 'gym',
             qualification: 'Personal Trainer (ACE-CPT)',
             experience: 4,
-            slug: 'stacy'  
+            slug: 'Anupriya'  
        },
         {
             id: 3,
@@ -47,17 +47,17 @@ const TrainerContextProvider = (props) => {
         },
         {
             id: 4,
-            name: 'David Phelps',
+            name: 'Samir Jaura',
             gender: `male`,
             pic: t4,
             type: 'gym',
             qualification: 'Certified Personal Fitness Trainer (CPFT)',
             experience: 6,
-            slug: 'david'        
+            slug: 'Samir'        
         },
         {
             id: 5,
-            name: 'Juan Martinez',
+            name: 'David Phelps',
             gender: `male`,
             pic: t5,
             type: 'gym',
@@ -67,33 +67,33 @@ const TrainerContextProvider = (props) => {
         },
         {
             id: 6,
-            name: 'Angela Ng',
-            gender: `female`,
+            name: 'Yuvraj Bhavnagar',
+            gender: `male`,
             pic: t6,
             type: 'nut',
             qualification: 'MS Nutrition and Food Science from University of California-Berkeley',
             experience: 5,
-            slug: 'angela'  
+            slug: 'Yuvraj'  
         },
         {
             id: 7,
-            name: 'Sophie Cortez',
+            name: 'Rujuta Diwekar',
             gender: `female`,
             pic: t7,
             type: 'nut',
             qualification: 'PhD in Applied Nutrition from Cornell University',
             experience: 7,
-            slug: 'sophie'        
+            slug: 'Rujuta'        
         },
         {
             id: 8,
-            name: 'Janie Lopez',
-            gender: `female`,
+            name: 'Rohan Sharma',
+            gender: `male`,
             pic: t8,
             type: 'nut',
             qualification: 'MS in Nutrition and Food Science from University of Georgia',
             experience: 3,
-            slug: 'janie'        
+            slug: 'Rohan'        
         },
         {
             id: 9,
@@ -107,13 +107,13 @@ const TrainerContextProvider = (props) => {
         },
         {
             id: 10,
-            name: 'CJ Wells',
+            name: 'Tarun Bhatia',
             gender: `male`,
             pic: t10,
             type: 'gym',
             qualification: 'Certified Personal Fitness Trainer (CPFT)',
             experience: 12,
-            slug:'cj'
+            slug:'Tarun'
         }
     ]
 

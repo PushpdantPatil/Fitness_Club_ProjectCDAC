@@ -2,7 +2,7 @@ package com.app.dto;
 
 import java.time.LocalDateTime;
 
-import com.app.pojos.Packages;
+import com.app.pojos.Member;
 
 public class InvoiceDto 
 {
@@ -11,13 +11,25 @@ public class InvoiceDto
 	private double amount;
 	private LocalDateTime paymentDate;
 	private String packages;
-	
+	private Member member;
 	
 	
 	public InvoiceDto() {
 		super();
 		
 	}
+
+	
+
+	public InvoiceDto(double paymentId, double amount, LocalDateTime paymentDate, String packages, Member member) {
+		super();
+		this.paymentId = paymentId;
+		this.amount = amount;
+		this.paymentDate = paymentDate;
+		this.packages = packages;
+		this.member = member;
+	}
+
 
 
 	public InvoiceDto(double paymentId, double amount, LocalDateTime paymentDate, String packages) {
@@ -66,6 +78,18 @@ public class InvoiceDto
 
 	public void setPackages(String packages) {
 		this.packages = packages;
+	}
+
+
+
+	public Member getMember() {
+		return member;
+	}
+
+
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 	

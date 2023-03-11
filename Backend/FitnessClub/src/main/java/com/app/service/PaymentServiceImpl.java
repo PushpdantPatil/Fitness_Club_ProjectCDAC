@@ -54,7 +54,7 @@ public class PaymentServiceImpl implements IPayamentService
 		Payment payment = new Payment(packages.getPrice(),LocalDateTime.now(),member,packages);
 		payment = payrepo.save(payment);
 		
-		InvoiceDto invc = new InvoiceDto(payment.getId(), purchase.getAmount(), LocalDateTime.now(), packages.getPackageName());
+		InvoiceDto invc = new InvoiceDto(payment.getId(), purchase.getAmount(), LocalDateTime.now(), packages.getPackageName(),member);
 		return invc;
 	}
 
