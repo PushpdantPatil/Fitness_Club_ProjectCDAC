@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import {TrainerContext} from '../context/TrainerContext'
-import vid from '../assets/180419_Boxing_A1_04.mp4';
+// import vid from '../assets/180419_Boxing_A1_04.mp4';
 import ExpertCard from './ExpertCard';
 
 const About = () => {
